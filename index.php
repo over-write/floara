@@ -41,10 +41,10 @@
 
     <?php basename($_SERVER['PHP_SELF']); ?>
     <?php if(basename($_SERVER['PHP_SELF']) == "admin.php"){ ?>
-    <script type='text/javascript' src='js/froala_editor.min.js'></script>
-    <script type='text/javascript' src='js/plugins/link.min.js'></script>
-    <script type='text/javascript' src='js/plugins/table.min.js'></script>
-    <script type='text/javascript' src='js/languages/ja.js'></script>
+        <script type='text/javascript' src='js/froala_editor.min.js'></script>
+        <script type='text/javascript' src='js/plugins/link.min.js'></script>
+        <script type='text/javascript' src='js/plugins/table.min.js'></script>
+        <script type='text/javascript' src='js/languages/ja.js'></script>
         <script>
             $(function() {
 
@@ -105,6 +105,7 @@
                     );
                 });
 
+                $(".fadeout").fadeOut("5000");
             })
         </script>
     <?php } ?>
@@ -112,39 +113,49 @@
 </head>
 <body>
 <div class="modaal-container">
+
     <?php if(basename($_SERVER['PHP_SELF']) == "admin.php"){ ?>
-    <div class="btn-area preview" style="display: none;margin-top: 20px;">
-        <a href="./" target="_blank"><input type="button" value="サイトを確認する" ></a>
-    </div>
+        <div class="btn-area">
+            <?php if(isset($_POST["init"])) { ?>
+                <p class="fadeout">Initialized.(初期化しました)</p>
+            <?php } ?>
+            <form action="./admin.php" method="post"><input type="submit" value="Initialize（初期データに戻す）"  name="init"></a></form>
+        </div>
+    <?php } ?>
+
+    <?php if(basename($_SERVER['PHP_SELF']) == "admin.php"){ ?>
+        <div class="btn-area preview" style="display: none;margin-top: 20px;">
+            <a href="./" target="_blank"><input type="button" value="サイトを確認する" ></a>
+        </div>
     <?php } ?>
     <section class="m-box">
         <div id="froala-editor">
             <table id="theaters">
-                  <?php
+                <?php
 
-                  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+                $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-                  $server = $url["host"];
-                  $username = $url["user"];
-                  $password = $url["pass"];
-                  $db = substr($url["path"], 1);
+                $server = $url["host"];
+                $username = $url["user"];
+                $password = $url["pass"];
+                $db = substr($url["path"], 1);
 
-                  $link = mysqli_connect($server, $username, $password, $db);
-                  $result = mysqli_query($link, "select * from page");
-                  while($page = mysqli_fetch_array($result)) {
-                      $body = $page['body'];
-                  }
-                  echo $body;
+                $link = mysqli_connect($server, $username, $password, $db);
+                $result = mysqli_query($link, "select * from page");
+                while($page = mysqli_fetch_array($result)) {
+                    $body = $page['body'];
+                }
+                echo $body;
 
-                  ?>
+                ?>
             </table>
         </div>
-   </section>
-<?php if(basename($_SERVER['PHP_SELF']) == "admin.php"){ ?>
+    </section>
+    <?php if(basename($_SERVER['PHP_SELF']) == "admin.php"){ ?>
         <div class="btn-area">
             <input type="button" value="保存" id="send" >
         </div>
-<?php } ?>
+    <?php } ?>
 </div>
 
 </body>
