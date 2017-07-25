@@ -1,0 +1,10 @@
+{
+    "name": "takahiro/froala",
+    "description": "try Froala",
+    "require": {
+      "php": "~7.0"
+    },
+    "require-dev": {
+      "heroku/heroku-buildpack-php": "*"
+    }
+}

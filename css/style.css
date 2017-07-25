@@ -1,0 +1,206 @@
+@charset "utf-8";
+/*----------------------------------------------------------------------
+Initialization
+----------------------------------------------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*
+html5doctor.com Reset Stylesheet
+v1.4
+2009-07-27
+Author: Richard Clark - http://richclarkdesign.com
+*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, dialog, figure, footer, header,
+hgroup, menu, nav, section,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    font-weight: normal;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+body {
+    line-height: 1;
+}
+
+article, aside, dialog, figure, footer, header,
+hgroup, nav, section {
+    display: block;
+}
+
+nav ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+ins {
+    background-color: #ff9;
+    color: #000;
+    text-decoration: none;
+}
+
+mark {
+    background-color: #ff9;
+    color: #000;
+    font-style: italic;
+    font-weight: bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom: 1px dotted #000;
+    cursor: help;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+input, select {
+    vertical-align: middle;
+}
+
+img {
+    vertical-align: bottom;
+    　　　font-size: 0;
+    　　　line-height: 0;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+*:focus {
+    outline: none;
+}
+
+li a{
+    text-decoration: none;
+}
+
+
+body{
+    background-color: #fff;
+    font-family: "myfont", "MS PGothic", "Osaka", Arial, sans-serif;
+}
+.modaal-container {
+    margin: auto;
+    color: #5e35b1!important;;
+    max-width: 800px;
+    border-radius: 0px;
+    background: #fff;
+}
+
+.m-close{
+    cursor: pointer;
+    position: absolute;
+}
+
+.theater {
+    text-align: center;
+    padding-top: 3.7em;
+    padding-bottom: 1em;
+}
+
+table {
+    width: 100%;
+    font-size: 1em;
+    text-align: center;
+    overflow: hidden;
+    border: 0.1em solid #5e35b1!important;;
+}
+tr {
+    width: 100%;
+    border: 0.1em solid #5e35b1;
+}
+th {
+      text-align: center;
+      line-height: 4em;
+      padding-right: 1.5em;
+      background-color: #5e35b1!important;
+      color: #fff;
+}
+
+td {
+    text-align: left;
+    line-height: 4em;
+    border: 0.1em solid #5e35b1!important;
+    color: #5e35b1 !important;
+    padding-right: 3.5em;
+    padding-left: 2.8em;
+}
+
+tr td:last-child{
+    text-align: center;
+}
+
+
+.btn-area{
+    width: 100%;
+    text-align: center;
+}
+
+.btn-area input {
+    /* 文字サイズを1.4emに指定 */
+    font-size: 1.4em;
+    /* 文字の太さをboldに指定 */
+    font-weight: bold;
+    /* 縦方向に10px、
+     * 横方向に30pxの余白を指定 */
+    padding: 10px 30px;
+    /* 背景色を濃い青色に指定 */
+    background-color: #248;
+    /* 文字色を白色に指定 */
+    color: #fff;
+    /* ボーダーをなくす */
+    border-style: none;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btn-area input:hover {
+    /* 背景色を明るい青色に指定 */
+    background-color: #24d;
+
+    /* 文字色を白色に指定 */
+    color: #fff;
+}
