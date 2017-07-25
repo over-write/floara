@@ -2,7 +2,7 @@
 <html xmlns:og="http://ogp.me/ns#" lang="ja">
 <head>
     <meta charset="utf-8">
-    <title>Froula Test | wysiwyg Change table data</title>
+    <title>Froala Test | wysiwyg Change table data</title>
     <meta name="viewport" content="width=750px">
     <meta name="description" content="">
     <meta name="keywords" content="">
