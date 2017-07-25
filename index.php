@@ -2,7 +2,7 @@
 <html xmlns:og="http://ogp.me/ns#" lang="ja">
 <head>
     <meta charset="utf-8">
-    <title>Froulaの実験</title>
+    <title>Froula Test | wysiwyg Change table data</title>
     <meta name="viewport" content="width=750px">
     <meta name="description" content="">
     <meta name="keywords" content="">
@@ -41,16 +41,16 @@
 
     <?php basename($_SERVER['PHP_SELF']); ?>
     <?php if(basename($_SERVER['PHP_SELF']) == "admin.php"){ ?>
-        <script type='text/javascript' src='js/froala_editor.min.js'></script>
-        <script type='text/javascript' src='js/plugins/link.min.js'></script>
-        <script type='text/javascript' src='js/plugins/table.min.js'></script>
-        <script type='text/javascript' src='js/languages/ja.js'></script>
+    <script type='text/javascript' src='js/froala_editor.min.js'></script>
+    <script type='text/javascript' src='js/plugins/link.min.js'></script>
+    <script type='text/javascript' src='js/plugins/table.min.js'></script>
+    <script type='text/javascript' src='js/languages/<?php echo substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2); ?>.js'></script>
         <script>
             $(function() {
 
                 $.FroalaEditor.DefineIcon('insert', {NAME: 'plus'});
                 $.FroalaEditor.RegisterCommand('insert', {
-                    title: '最下部に1件追加',
+                    title: 'Add Row the bottom(最下部に1件追加)',
                     focus: true,
                     undo: true,
                     refreshAfterCallback: true,
@@ -60,7 +60,7 @@
                 });
                 $.FroalaEditor.DefineIcon('clear', {NAME: 'remove'});
                 $.FroalaEditor.RegisterCommand('clear', {
-                    title: '最下部を１件削除',
+                    title: 'Delete Row the bottom (最下部を１件削除)',
                     focus: false,
                     undo: true,
                     refreshAfterCallback: true,
@@ -71,7 +71,7 @@
                 });
 
                 $('div#froala-editor').froalaEditor({
-                    language: 'ja',
+                    language: '<?php echo substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2); ?>',
                     height:500,
                     linkAlwaysBlank: true,
                     tableEditButtons: ['tableRows'],
@@ -115,47 +115,56 @@
 <div class="modaal-container">
 
     <?php if(basename($_SERVER['PHP_SELF']) == "admin.php"){ ?>
-        <div class="btn-area">
-            <?php if(isset($_POST["init"])) { ?>
-                <p class="fadeout">Initialized.(初期化しました)</p>
-            <?php } ?>
-            <form action="./admin.php" method="post"><input type="submit" value="Initialize（初期データに戻す）"  name="init"></a></form>
-        </div>
+    <div class="btn-area">
+        <?php if(isset($_POST["init"])) { ?>
+            <p class="fadeout">Initialized.(初期化しました)</p>
+        <?php } ?>
+        <form action="./admin.php" method="post"><input type="submit" value="Initialize（初期データに戻す）"  name="init"></a></form>
+    </div>
     <?php } ?>
 
     <?php if(basename($_SERVER['PHP_SELF']) == "admin.php"){ ?>
-        <div class="btn-area preview" style="display: none;margin-top: 20px;">
-            <a href="./" target="_blank"><input type="button" value="サイトを確認する" ></a>
-        </div>
+    <div class="btn-area preview" style="display: none;margin-top: 20px;">
+        <a href="./" target="_blank"><input type="button" value="Preview(サイトを確認する)" ></a>
+    </div>
     <?php } ?>
     <section class="m-box">
         <div id="froala-editor">
             <table id="theaters">
-                <?php
+                  <?php
 
-                $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+                  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-                $server = $url["host"];
-                $username = $url["user"];
-                $password = $url["pass"];
-                $db = substr($url["path"], 1);
+                  $server = $url["host"];
+                  $username = $url["user"];
+                  $password = $url["pass"];
+                  $db = substr($url["path"], 1);
 
-                $link = mysqli_connect($server, $username, $password, $db);
-                $result = mysqli_query($link, "select * from page");
-                while($page = mysqli_fetch_array($result)) {
-                    $body = $page['body'];
-                }
-                echo $body;
+                  $link = mysqli_connect($server, $username, $password, $db);
+                  $result = mysqli_query($link, "select * from page");
+                  while($page = mysqli_fetch_array($result)) {
+                      $body = $page['body'];
+                  }
+                  echo $body;
 
-                ?>
+                  ?>
             </table>
         </div>
-    </section>
-    <?php if(basename($_SERVER['PHP_SELF']) == "admin.php"){ ?>
+   </section>
+<?php if(basename($_SERVER['PHP_SELF']) == "admin.php"){ ?>
         <div class="btn-area">
-            <input type="button" value="保存" id="send" >
+            <input type="button" value="save(保存)" id="send" >
         </div>
-    <?php } ?>
+
+    <div style="line-height:1.2em">
+        <h3>How to Use</h3>
+        You Can Change Table data on Directory.<br />
+        If you changed the data the data keeping you saved.<br />
+        And you can see the preview btn that linked Guest Side url!<br />
+        <b>Let's Enjoy!</b>
+    </div>
+
+<?php } ?>
 </div>
 
 </body>
